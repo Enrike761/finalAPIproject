@@ -1,0 +1,53 @@
+This notepad contains the explanations of the code shown in the Python notebook (1) and some of the difficulties I had to fase (2):
+
+
+1. Notebook process
+
+
+I used the api of pokemon, called pokeapi and this is the dataframe I got by using two different endpoints and concatenating them. For each endpoint I have iterated 252 (which are the number of pokemons of the fisrt 2 generations, and I needed mínimum 250 so it was perfect) times to get the files grouped on dictionaries from 252 different endpoints. The proccess to get the data from an API is to import requests, get a response by using "get" and finally get the json file and add it to an empty list to be able to créate the dataframe.
+
+This endpoint or url was called species and contained information or keys like color, type of eggs so I just kept 2 columns by using iloc and I also adjusted the index to start from 1. In this way the index also coincides with the ID of each pokemon.
+
+You can also see some EDA calculations
+
+Then i have iterated again through another endpoint containing more relevant information and I got the second dataframe.
+
+Process to get the values we want: create a loop using iterrows which allows to iterate through rows, getting Access to the index of the row and each row. Then I created a dictionary and select the columns I wanted and the key,values needed and finally add it to a list to convert it in the final dataframe.
+
+I also faced a problem in the column stats and had to iterate because here I wanted to draw all the values of the key "base_stat" for the different keys inside the keys ["stat"]["name"] which Will be the names of the columns "speed", "hp", etc.
+
+In the dictionary I created, I kept the values of the rows for the columns "name" and "weight", fully. and all the other columns apart from type were inside the column stats.
+
+Then I concatenated both final dataframes.
+
+More EDA and using groupby to check possible correlations between columns.
+
+Checking the presence of NaNs and duplicates
+
+Then, I created a function to determine the top 10 strongest pokemon by assigning different importance to the columns. I also created a function to determine the strongness for a pokemon by inputting their name.
+
+For data visualization, i had to import seaborn and matplot, and I used bars and pies for the categorical values and histograms for the numerical ones. Also a scatterplot.
+
+Finally, I checked that I could access succesfully to specific information within the dataframe and I converted to csv and download it.
+
+
+2. Difficulties:
+
+
+Creating a graph for the variable type makes it difficult to view as it has many values. I have found a solution to group them into smaller groups (for example, all those that are double types group them into their general type, ie, flying-bug type into flying and/or bug, in this way there would only be 7 types).
+
+I had to equal the number of rows and columns by modifying the index.
+
+I had some problems to find the name for specified searches like finding the name of the pokemons of type rock.
+
+I had some problems to be able to call the function by the name of a pokemon.
+
+
+
+
+
+
+
+
+
+
